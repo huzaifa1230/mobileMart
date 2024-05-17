@@ -1,0 +1,52 @@
+[
+    {
+      "id": 1,
+      "img": "https://images.samsung.com/is/image/samsung/assets/pk/smartphones/buy/compare-product02.png?$260_260_PNG$",
+      "title": "Samsung Galaxy S21",
+      "price": "$799",
+      "des": "Flagship phone with 6.2-inch display, Snapdragon 888, and triple camera setup."
+    },
+    {
+      "id": 2,
+      "img": "https://images.samsung.com/is/image/samsung/assets/pk/smartphones/buy/compare-product01.png?$260_260_PNG$",
+      "title": "Samsung S21 Ultra",
+      "price": "$1199",
+      "des": "Top-tier phone with 6.8-inch display, 108MP camera, and S-Pen support."
+    },
+    {
+      "id": 3,
+      "img": "https://via.placeholder.com/150/samsung-galaxy-note20.jpg",
+      "title": "Samsung Note 20",
+      "price": "$999",
+      "des": "Premium phone with 6.7-inch display, Exynos 990, and integrated S-Pen."
+    },
+    {
+      "id": 4,
+      "img": "https://via.placeholder.com/150/samsung-galaxy-a52.jpg",
+      "title": "Samsung Galaxy A52",
+      "price": "$499",
+      "des": "Mid-range phone with 6.5-inch display, Snapdragon 720G, and quad camera."
+    },
+    {
+      "id": 5,
+      "img": "https://via.placeholder.com/150/samsung-galaxy-a72.jpg",
+      "title": "Samsung Galaxy A72",
+      "price": "$599",
+      "des": "Mid-range phone with 6.7-inch display, Snapdragon 720G, and 64MP main camera."
+    },
+    {
+      "id": 6,
+      "img": "https://via.placeholder.com/150/samsung-galaxy-z-fold2.jpg",
+      "title": "Samsung Galaxy Fold2",
+      "price": "$1999",
+      "des": "Innovative foldable phone with 7.6-inch display, Snapdragon 865+, and triple camera."
+    },
+    {
+      "id": 7,
+      "img": "https://via.placeholder.com/150/samsung-galaxy-z-flip.jpg",
+      "title": "Samsung Galaxy Z Flip",
+      "price": "$999",
+      "des": "Compact foldable phone with 6.7-inch display, Snapdragon 855+, and dual camera."
+    }
+  ]
+  
