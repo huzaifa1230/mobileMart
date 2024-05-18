@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import data from "../data.json";
+import Hero from "./Hero";
+import Testimonials from "./Testimonials";
 
 function Home() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -34,7 +36,9 @@ function Home() {
   };
 
   return (
-    <div className="p-10 bg-black text-red-300 min-h-screen flex flex-col items-center justify-center">
+    < >
+    <Hero />
+    <div className="p-10 bg-black text-red-300 min-h-screen flex flex-col items-center justify-center ">
       <div className="grid grid-cols-3 gap-10  w-[900px]">
         {renderItems()}
       </div>
@@ -56,6 +60,11 @@ function Home() {
         </button>
       </div>
     </div>
+    <div className="flex flex-col w-full bg-black">
+  <div className="divider divider-primary p-5"></div>
+</div>
+<Testimonials />
+    </>
   );
 }
 

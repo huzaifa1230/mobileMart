@@ -4,16 +4,16 @@ function Sidebar() {
   return (
     <div className="drawer ">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content bg-black text-red-600 pl-6">
+      <div className="drawer-content bg-black text-red-600 pl-6 pb-6">
         {/* Page content here */}
         <label
           htmlFor="my-drawer"
-          className=" btn bg-black text-red-600 border-red-500 drawer-button hover:bg-red-900 hover:text-black"
+          className="  btn bg-black text-red-600 border-red-800 drawer-button hover:bg-red-900 hover:text-black hover:border-black"
         >
           View Categories
         </label>
       </div>
-      <div className="drawer-side pt-[80px]">
+      <div className="drawer-side pt-[80px] ">
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
