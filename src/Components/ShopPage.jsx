@@ -1,47 +1,80 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 
 function ShopPage() {
+  const [products, setProducts] = useState([]);
+  const [sortBy, setSortBy] = useState('default'); 
+
+  useEffect(() => {
+   
+    fetch('/data.json')
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const sortProducts = (criteria) => {
+    let sortedProducts = [...products]; // Create a copy of the original array
+    
+    switch(criteria) {
+      case 'priceLowToHigh':
+        sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        break;
+      case 'priceHighToLow':
+        sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        break;
+      default:
+        // Default case, do nothing (products remain in original order)
+        break;
+    }
+    
+    setProducts(sortedProducts); // Update state with the sorted array
+  };
+  
+
+  const handleChange = (e) => {
+    const selectedOption = e.target.value;
+    console.log('Selected option:', selectedOption);
+    setSortBy(selectedOption);
+    sortProducts(selectedOption); // Call sortProducts after updating sortBy state
+  };
+
   return (
     <>
-        
+      {/* Sorting dropdown menu */}
+      <div className="flex justify-end my-4">
+      <select
+  className="text-white bg-black border border-white px-4 py-2 rounded-md"
+  value={sortBy}
+  onChange={handleChange}
+>
+  <option value="default">Default</option>
+  <option value="priceLowToHigh">Price: Low to High</option>
+  <option value="priceHighToLow">Price: High to Low</option>
+</select>
+      </div>
 
-<div class="w-full max-w-sm bg-black border text-white border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
-        </a>
-        <div class="flex items-center mt-2.5 mb-5">
-            <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
-                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
-                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
-                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
-                <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
+      <div className="flex flex-wrap justify-center bg-black">
+        {products.map((product) => (
+          <div key={product.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2">
+            <div className=" border text-white border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+              <a href="#">
+                <img className="p-4 rounded-t-lg" src={product.img} alt={`${product.title} image`} />
+              </a>
+              <div className="px-4 pb-4">
+                <a href="#">
+                  <h5 className="text-lg font-semibold tracking-tight text-white">{product.title}</h5>
+                  <p>{product.des}</p>
+                </a>
+                <div className="flex items-center justify-between mt-2.5 mb-4">
+                  <span className="text-2xl font-bold text-white">{product.price}</span>
+                  <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                </div>
+              </div>
             </div>
-            <span class="bg-red-300 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-white">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
-        </div>
-    </div>
-</div>
-
+          </div>
+        ))}
+      </div>
     </>
-  )
+  );
 }
 
-export default ShopPage
+export default ShopPage;
