@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({cart}) {
   return (
     <div className="navbar bg-black text-red-600">
       <div className="navbar-start">
@@ -24,7 +24,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-black text-red-600 mt-3 z-[1] p-2 shadow  rounded-box w-52"
+            className="menu menu-sm dropdown-content  bg-black text-red-600 mt-3 z-[1] p-2 shadow  rounded-box w-52"
           >
             <li>
               <Link to="/">Home</Link>
@@ -33,14 +33,14 @@ function Navbar() {
               <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart">Cart ({cart.length})</Link>
             </li>
           </ul>
         </div>
         <a className="btn btn-ghost text-4xl">MobileMart</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-2xl">
+        <ul className="menu menu-horizontal pl-12 px-1 gap-8 text-2xl">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -48,12 +48,9 @@ function Navbar() {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Cart ({cart.length})</Link>
           </li>
         </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
       </div>
     </div>
   );
