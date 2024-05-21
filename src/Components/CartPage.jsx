@@ -62,3 +62,8 @@ function CartPage({ cart, updateCart }) {
 }
 
 export default CartPage;
+
+
+
+
+
