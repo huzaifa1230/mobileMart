@@ -1,42 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-function ShopPage({ cart, setCart }) {
+function IphonePage({ cart, setCart }) {
   const [products, setProducts] = useState([]);
-  const [sortBy, setSortBy] = useState("default");
 
   useEffect(() => {
     fetch("/data.json")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        const iphoneProducts = data.filter(
+          (product) => product.company === "apple"
+        );
+        setProducts(iphoneProducts);
+      });
   }, []);
-
-  const sortProducts = (criteria) => {
-    let sortedProducts = [...products];
-
-    switch (criteria) {
-      case "priceLowToHigh":
-        sortedProducts.sort(
-          (a, b) => parseFloat(a.price) - parseFloat(b.price)
-        );
-        break;
-      case "priceHighToLow":
-        sortedProducts.sort(
-          (a, b) => parseFloat(b.price) - parseFloat(a.price)
-        );
-        break;
-      default:
-        break;
-    }
-
-    setProducts(sortedProducts);
-  };
-
-  const handleChange = (e) => {
-    const selectedOption = e.target.value;
-    console.log("Selected option:", selectedOption);
-    setSortBy(selectedOption);
-    sortProducts(selectedOption);
-  };
 
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
@@ -57,18 +33,6 @@ function ShopPage({ cart, setCart }) {
 
   return (
     <>
-      <div className="flex justify-end py-4">
-        <select
-          className="text-white bg-black border border-white px-4 py-2 rounded-md"
-          value={sortBy}
-          onChange={handleChange}
-        >
-          <option value="default">Default</option>
-          <option value="priceLowToHigh">Price: Low to High</option>
-          <option value="priceHighToLow">Price: High to Low</option>
-        </select>
-      </div>
-
       <div className="flex flex-wrap justify-center bg-black">
         {products.map((product) => (
           <div
@@ -106,10 +70,9 @@ function ShopPage({ cart, setCart }) {
           </div>
         ))}
       </div>
-
       <div className="divider mb-0 divider-primary pb-12 pt-12 p-5"></div>
     </>
   );
 }
 
-export default ShopPage;
+export default IphonePage;

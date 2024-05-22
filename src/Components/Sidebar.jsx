@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -23,13 +24,13 @@ function Sidebar() {
           <h1 className="text-white text-2xl pt-12 pb-3">Categories</h1>
 
           <li>
-            <a>Samsung</a>
+            <Link to="/samsung">Samsung</Link>
           </li>
           <li>
-            <a>Iphone</a>
+            <Link to="/iphone">Iphone</Link>
           </li>
           <li>
-            <a>Matrola</a>
+            <a>Motorola</a>
           </li>
           <li>
             <a>Tecno</a>
